@@ -6,8 +6,6 @@ from pathlib import Path
 from dataclasses import asdict
 from fastapi import FastAPI, UploadFile, File, HTTPException
 
-
-
 app = FastAPI(
     title="Abschlussprojekt Ticket",
     version="1.0.0"

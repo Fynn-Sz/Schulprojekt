@@ -5,10 +5,10 @@ from typing import Optional
 @dataclass
 class ImportDatensatz:
     id: str
-    quellDatei: Optional[str] = None
     titel: str
     beschreibung: str
+    quellDatei: Optional[str] = None
     prio: Optional[str] = None
     status: Optional[str] = None
-    #String Array // immer wenn ein neues Objekt erstellt wird, wird automatisch eine leere Liste erstellt
+    #String Array // immer wenn ein neues Objekt erstellt wurde, wird automatisch eine leere Liste erstellt
     fach: Optional [list[str]] = field(default_factory=list)
