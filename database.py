@@ -66,7 +66,7 @@ def ticketSpeichern(ticket: ImportDatensatz):
         ticket.beschreibung,
         ticket.prio,
         ticket.status,
-        ticket.fach
+        ", ".join(ticket.fach) if ticket.fach else ""
     ))
 
     #Änderungen speichern
@@ -93,13 +93,13 @@ def alleTicketsLaden() -> list[ImportDatensatz]:
     tickets = []
     for datensatz in datensaetze:
         ticket = ImportDatensatz(
-            id=datensatz[0],
-            quellDatei=datensatz[1],
-            titel=datensatz[2],
-            beschreibung=datensatz[3],
-            prio=datensatz[4],
-            status=datensatz[5],
-            fach=datensatz[6]
+            id=datensatz[1],
+            quellDatei=datensatz[2],
+            titel=datensatz[3],
+            beschreibung=datensatz[4],
+            prio=datensatz[5],
+            status=datensatz[6],
+            fach=datensatz[7].split(", ") if datensatz[7] else []
         )
 
         tickets.append(ticket)
@@ -126,13 +126,13 @@ def einTicketLaden(idTicket: str) -> list[ImportDatensatz]:
     tickets = []
     for datensatz in datensaetze:
         ticket = ImportDatensatz(
-            id=datensatz[0],
-            quellDatei=datensatz[1],
-            titel=datensatz[2],
-            beschreibung=datensatz[3],
-            prio=datensatz[4],
-            status=datensatz[5],
-            fach=datensatz[6]
+            id=datensatz[1],
+            quellDatei=datensatz[2],
+            titel=datensatz[3],
+            beschreibung=datensatz[4],
+            prio=datensatz[5],
+            status=datensatz[6],
+            fach=datensatz[7].split(", ") if datensatz[7] else []
         )
 
         tickets.append(ticket)
@@ -177,13 +177,13 @@ def ticketLoeschen(ticketID) -> list[ImportDatensatz]:
     tickets = []
     for datensatz in datensaetze:
         ticket = ImportDatensatz(
-            id=datensatz[0],
-            quellDatei=datensatz[1],
-            titel=datensatz[2],
-            beschreibung=datensatz[3],
-            prio=datensatz[4],
-            status=datensatz[5],
-            fach=datensatz[6]
+            id=datensatz[1],
+            quellDatei=datensatz[2],
+            titel=datensatz[3],
+            beschreibung=datensatz[4],
+            prio=datensatz[5],
+            status=datensatz[6],
+            fach=datensatz[7].split(", ") if datensatz[7] else []
         )
 
         tickets.append(ticket)

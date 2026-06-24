@@ -14,9 +14,9 @@ def jsonRead(dateiname) -> list[ImportDatensatz]:
     with open(dateiname, "r", encoding="utf-8") as datei:
         datensatz = json.load(datei)
     
-    tickets:list[ImportDatensatz] = jsonToTicket(datensatz, dateiname)
+    ticket = jsonToTicket(datensatz, dateiname)
     #Wandelt den JSON Datensatz in ein "ticket" Datensatz um und gibt das Ticket als ImportDatensatz Objekt zurück
-    return tickets
+    return [ticket]
 
 def jsonToTicket(datensatz: dict, dateiname: str) -> ImportDatensatz:
     return ImportDatensatz(
@@ -31,16 +31,17 @@ def jsonToTicket(datensatz: dict, dateiname: str) -> ImportDatensatz:
 #Schreiben von dem Ticket in die Datenbank
 def jsonWriteInDatabase(dateiname):
     dbInit()
-    ticket = jsonRead(dateiname)
-    print(ticket)
-    ticket = matching(ticket)
-    ticketSpeichern(ticket)
-    return ticket
+    tickets = jsonRead(dateiname)
+    for ticket in tickets:
+        print(ticket)
+        ticket = matching(ticket)
+        ticketSpeichern(ticket)
+    return tickets
 
 #CSV
 def csvRead(dateiname: str) -> list[ImportDatensatz]:
     #CSV hat meistens mehrere Datensätze, deshalb Liste zum Speichern der Datensätze
-    tickets: list[ImportDatensatz]
+    tickets: list[ImportDatensatz] = []
 
     with open(dateiname, "r", encoding="utf-8") as datei:
         datensaetze = csv.DictReader(datei)

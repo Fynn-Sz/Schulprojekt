@@ -1,0 +1,4 @@
+id,quellDatei,titel,beschreibung,prio,status,
+test-1,.CSV,Datenbankanpassungen,Wie abgesprochen habe ich die Datenbankstruktur angepasst. Im Detail habe ich die Spalte <...> eingefügt.,Niedrig,Closed
+test-2,csv,Dokumentation,Ich habe die Dokumentation angepasst. Sollte noch etwas Fehler bitte bei mir melden.,Mittel,Closed
+test-3,,Geräte fehlen im Netz,Im Netzwerk werden mehrere Rechner nicht angezeigt. Ich bitte um schnellstmögliche Rücksprache.,Sehr Hoch,OPEN

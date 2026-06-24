@@ -38,16 +38,12 @@ faecher = {
 }
 
 
-def matching(ticket: list[ImportDatensatz]) -> list[ImportDatensatz]:
+def matching(ticket: ImportDatensatz) -> ImportDatensatz:
     #Das Fach ermitteln
     besteFaecher = matchingDo(ticket)
     
-    for bestesFach in besteFaecher:
-        #Wenn schon Inhalt exisitert, diesen überschreiben, sonst Inhalt "erstellen"
-        if len(ticket.fach[bestesFach]) > 0:
-            ticket.fach[bestesFach] = besteFaecher[bestesFach]
-        else:
-            ticket.fach.append(besteFaecher[bestesFach])
+    # Fächerliste dem Ticket zuweisen
+    ticket.fach = besteFaecher
 
     return ticket
 
@@ -80,7 +76,7 @@ def matchingDo(ticket: ImportDatensatz) -> list:
     
     #Regel 1 - Kein Fach hat mehr als 0 Punkte 
     if (maxPunkte == 0):
-        besteFaecher[0] = "Keine Fachzuweisung möglich"
+        besteFaecher.append("Keine Fachzuweisung möglich")
         return besteFaecher
 
     #Wenn es mindestens ein Fach mit mehr als 0 Punkten gibt
